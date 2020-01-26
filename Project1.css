@@ -23,6 +23,15 @@ body{
 	margin-right: 4rem;
 }
 
+#card1{
+	height: 100%;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin-left: 4rem;
+	margin-right: 4rem;
+}
+
 #play {
 	margin-top: 4rem;
 	display: flex;
@@ -30,6 +39,9 @@ body{
 	justify-content: center;
 }
 
+.row {
+	transition: 0.3s;
+}
 
 
 .jumbotron{

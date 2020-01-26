@@ -7,6 +7,8 @@
 	<script src="lib/codemirror.js"></script>
 	<script src="lib/javascript.js"></script>
 	<script src="lib/xml.js"></script>
+	<script src="jquery-3.4.1.min.js"></script>
+	
 	<link rel="stylesheet" href="lib/codemirror.css">
 </head>
 <body>
@@ -19,20 +21,21 @@
 	<div class="form-group">
     <input type="text" class="form-control input-lg" id="urlQuery" placeholder="Enter url...">
   	</div>
-  <button id="requestType" class="btn btn-info btn-lg">GET</button>
+  <button id="requestType" class="btn btn-info btn-lg" onclick="changeType()">POST</button>
 </div>
 </div>
 
 
 <div class="row">
-  	<div>
-		<div class="col-lg-5 col-md-12 buffer">
+  	<div id="wrapper">
+		<div id="canHide" class="col-lg-5 col-md-12 buffer">
   			<div id="card">
 				<textarea id="json" class="form-control" rows="9"></textarea>
 			</div>
 		</div>
-		<div class="col-lg-5 col-md-12 buffer">
-  			<div id="card"><textarea class="form-control" id="codeblock" rows="10" readonly></textarea></div>
+		<div id="changeWidth" class="col-lg-5 col-md-12 buffer">
+			  <div id="card"><textarea class="form-control" id="codeblock" rows="10" readonly></textarea></div>
+			  <div id="card1" hidden><iframe></iframe></div>
 		</div>
 	</div>
 </div>
@@ -63,5 +66,6 @@
 
 
 </script>
+<script src="script.js"></script>
 </body>
 </html>
