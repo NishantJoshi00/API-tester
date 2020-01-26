@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="Project1.css">
+	<script src="lib/codemirror.js"></script>
+	<script src="lib/javascript.js"></script>
+	<script src="lib/xml.js"></script>
+	<link rel="stylesheet" href="lib/codemirror.css">
+</head>
+<body>
+
+<div id="main">
+	<div class="jumbotron">
+		<h1>API Testing</h1>
+		<!-- <p> Sample text </p> -->
+		<div class="form-inline">
+	<div class="form-group">
+    <input type="text" class="form-control input-lg" id="urlQuery" placeholder="Enter url...">
+  	</div>
+  <button id="requestType" class="btn btn-info btn-lg">GET</button>
+</div>
+</div>
+
+
+<div class="row">
+  	<div>
+		<div class="col-lg-5 col-md-12 buffer">
+  			<div id="card">
+				<textarea id="json" class="form-control" rows="9"></textarea>
+			</div>
+		</div>
+		<div class="col-lg-5 col-md-12 buffer">
+  			<div id="card"><textarea class="form-control" id="codeblock" rows="10" readonly></textarea></div>
+		</div>
+	</div>
+</div>
+<div id="play" class="row mt-5">
+	<button id="run" class="btn btn-lg mr-5 mt-1">RUN</button>
+</div>
+</div>
+<script>
+	let textarea = document.getElementById("json");
+	let cm = CodeMirror.fromTextArea(textarea, {
+		mode: {name: 'javascript', json: true},
+		indentUnit: 4,
+		matchBrackets: true,
+		lineNumbers: true
+	});
+	let om = CodeMirror.fromTextArea(document.getElementById("codeblock"), {
+		mode: {name: 'javascript', json: true},
+		indentUnit: 4,
+		matchBrackets: true,
+		lineNumbers: true,
+		readOnly: true	
+	});
+	setInterval(function() {
+		cm.refresh();
+		om.setValue(cm.getValue())
+		om.refresh();
+	}, 10);
+
+
+</script>
+</body>
+</html>
