@@ -5,9 +5,17 @@
 // Components
 let requestBtn = document.getElementById("requestType")
 let wrap = document.getElementById("wrapper")
-let url = document.getElementById("urlQuery")
 
 
+
+
+// Helper Function
+
+function cleanContent(jqXHR) {
+    let out = jqXHR.getResponseHeader("content-type")
+    let re = new RegExp("/([A-Za-z]+)")
+    return re.exec(out)[1]
+}
 
 // Button Logic
 
@@ -28,10 +36,22 @@ function changeType() {
         wrap.style.justifyContent = "center"
     }
 }
-
+let gv;
 // GET request logic
 function getRequest() {
-    $.get(url.innerHTML, (data, textStatus, jqXHR)=>{
-        alert("status: " + textStatus + " data: " + data);
+    console.log("Inside the function")
+    $.get(document.getElementById("urlQuery").value, (data, textStatus, jqXHR)=>{
+        // console.log("status: " + textStatus + " data: " + data);
+        console.log(data)
+        console.log(cleanContent(jqXHR))      
     })
+}
+
+
+function runRequest() {
+    if (requestBtn.innerHTML == "GET") {
+        console.log("The Query was Fired")
+        console.log(document.getElementById("urlQuery").value)
+        getRequest()
+    }
 }
