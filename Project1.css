@@ -19,8 +19,8 @@ body{
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	margin-left: 4rem;
-	margin-right: 4rem;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 #card1{
@@ -28,10 +28,16 @@ body{
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	margin-left: 4rem;
-	margin-right: 4rem;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
+
+#theWeb {
+	height: 29.5rem;
+	width: 100%;
+	border: none;
+}
 #play {
 	margin-top: 4rem;
 	display: flex;
