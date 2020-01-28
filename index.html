@@ -21,7 +21,7 @@
 	<div class="form-group">
     <input type="text" class="form-control input-lg" id="urlQuery" placeholder="Enter url...">
   	</div>
-  <button id="requestType" class="btn btn-info btn-lg" onclick="changeType()">POST</button>
+  <button id="requestType" class="btn btn-info btn-lg" onclick="changeType();resetGet();">POST</button>
 </div>
 </div>
 
@@ -35,7 +35,7 @@
 		</div>
 		<div id="changeWidth" class="col-lg-5 col-md-12 buffer">
 			  <div id="card"><textarea class="form-control" id="codeblock" rows="10" readonly></textarea></div>
-			  <div id="card1" hidden><iframe></iframe></div>
+			  <div id="card1" hidden><iframe id="theWeb"></iframe></div>
 		</div>
 	</div>
 </div>
@@ -60,7 +60,6 @@
 	});
 	setInterval(function() {
 		cm.refresh();
-		om.setValue(cm.getValue())
 		om.refresh();
 	}, 10);
 
