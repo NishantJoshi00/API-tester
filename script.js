@@ -37,14 +37,39 @@ function changeType() {
     }
 }
 let gv;
+
+function resetGet() {
+    document.getElementById("card1").hidden = true
+    document.getElementById("card").hidden = false
+    om.setValue("")
+}
+
+
 // GET request logic
 function getRequest() {
     console.log("Inside the function")
     $.get(document.getElementById("urlQuery").value, (data, textStatus, jqXHR)=>{
-        // console.log("status: " + textStatus + " data: " + data);
-        console.log(data)
-        console.log(cleanContent(jqXHR))      
+        // // console.log("status: " + textStatus + " data: " + data);
+        // console.log(data)
+        // console.log(cleanContent(jqXHR))      
+        let type = cleanContent(jqXHR)
+        console.log(type)
+        if (type == "html") {
+            document.getElementById("card").hidden = true
+            document.getElementById("card1").hidden = false
+            document.getElementById("theWeb").srcdoc = data
+        } else {
+            document.getElementById("card1").hidden = true
+            document.getElementById("card").hidden = false
+            om.setValue(data)
+        }
     })
+}
+
+// POST request logic
+function postRequest() {
+    console.log("Inside the function")
+    
 }
 
 
