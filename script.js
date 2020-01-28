@@ -54,6 +54,8 @@ function getRequest() {
         // console.log(cleanContent(jqXHR))      
         let type = cleanContent(jqXHR)
         console.log(type)
+        console.log(data)
+        console.log(type)
         if (type == "html") {
             document.getElementById("card").hidden = true
             document.getElementById("card1").hidden = false
@@ -61,7 +63,11 @@ function getRequest() {
         } else {
             document.getElementById("card1").hidden = true
             document.getElementById("card").hidden = false
-            om.setValue(data)
+            if (type == "json") {
+                om.setValue(JSON.stringify(data, undefined, 4))
+            } else {
+                om.setValue(String(data))
+            }
         }
     })
 }
@@ -69,14 +75,46 @@ function getRequest() {
 // POST request logic
 function postRequest() {
     console.log("Inside the function")
-    
+    var data;
+    try {
+        data = JSON.parse(cm.getValue())
+    } catch(err) {
+        alert("Invalid JSON Query")
+        return err
+    }
+
+    $.post(document.getElementById("urlQuery").value, data, ( indata, status, jqXHR)=> {
+        gv = [indata, status, jqXHR]
+        let type = cleanContent(jqXHR)
+        console.log("hello")
+        if (type == "html") {
+            document.getElementById("card").hidden = true
+            document.getElementById("card1").hidden = false
+            document.getElementById("theWeb").srcdoc = data
+        } else {
+            document.getElementById("card1").hidden = true
+            document.getElementById("card").hidden = false
+            if (type == "json") {
+                om.setValue(JSON.stringify(indata, undefined, 4))
+            } else {
+                om.setValue(String(indata))
+            }
+        }
+    })
 }
 
 
 function runRequest() {
+    document.getElementById("card1").hidden = true
+    document.getElementById("card").hidden = false
+    om.setValue("")
     if (requestBtn.innerHTML == "GET") {
         console.log("The Query was Fired")
         console.log(document.getElementById("urlQuery").value)
         getRequest()
+    } if (requestBtn.innerHTML == "POST") {
+        console.log("POST Fired")
+        console.log(document.getElementById("urlQuery").value)
+        postRequest()
     }
 }
